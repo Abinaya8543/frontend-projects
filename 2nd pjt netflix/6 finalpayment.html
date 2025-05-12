@@ -1,0 +1,300 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Netflix Payment Picker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    header img {
+      height: 32px;
+      width: auto;
+    }
+    header button {
+      font-size: 12px;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: black;
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+      padding: 0 16px;
+    }
+    section.payment-picker {
+      border: 1px solid black;
+      max-width: 480px;
+      width: 100%;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .lock-icon-container {
+      border: 1px solid #dc2626;
+      border-radius: 9999px;
+      padding: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+    }
+    .lock-icon {
+      color: #dc2626;
+      font-size: 20px;
+    }
+    .step-text {
+      font-size: 9px;
+      color: #6b7280;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    h1 {
+      font-weight: 600;
+      font-size: 18px;
+      margin: 0 0 8px 0;
+      text-align: center;
+    }
+    .description {
+      font-size: 12px;
+      text-align: center;
+      max-width: 280px;
+      margin: 0 0 4px 0;
+      line-height: 1.2;
+    }
+    .description-bold {
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+      max-width: 280px;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .payment-options {
+      width: 100%;
+      max-width: 360px;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+      color: #111827;
+    }
+    .payment-option {
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+    .payment-option:hover {
+      background-color: #f9fafb;
+    }
+    .payment-option .left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .payment-option img {
+      height: 16px;
+      width: auto;
+      display: inline-block;
+    }
+    .lock-small {
+      color: #fbbf24;
+      font-size: 12px;
+      margin-left: 4px;
+    }
+    .end-to-end {
+      font-size: 9px;
+      color: #6b7280;
+      align-self: flex-end;
+      margin-top: 4px;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    footer {
+      background-color: #f3f4f6;
+      margin-top: 80px;
+      padding: 32px 24px;
+      font-size: 12px;
+      color: #6b7280;
+      box-sizing: border-box;
+    }
+    footer .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    footer .left {
+      flex: 1 1 300px;
+      min-width: 200px;
+    }
+    footer .left p {
+      margin: 0 0 16px 0;
+      font-size: 12px;
+    }
+    footer .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 10px;
+    }
+    footer .links a {
+      color: #6b7280;
+      text-decoration: none;
+    }
+    footer .links a:hover {
+      text-decoration: underline;
+    }
+    footer .right {
+      flex: 1 1 150px;
+      min-width: 150px;
+      display: flex;
+      align-items: center;
+    }
+    footer select {
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      background-color: white;
+      color: #4b5563;
+      font-size: 12px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      footer .container {
+        flex-direction: column;
+        gap: 16px;
+      }
+      footer .right {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<body>
+  <header>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+      alt="Netflix logo in red text"
+    />
+    <button>Sign Out</button>
+  </header>
+  <main>
+    <section class="payment-picker" aria-label="Choose how to pay section">
+      <div class="lock-icon-container" aria-hidden="true">
+        <i class="fas fa-lock lock-icon"></i>
+      </div>
+      <p class="step-text">STEP 4 OF 4</p>
+      <h1>Choose how to pay</h1>
+      <p class="description">
+        Your payment is encrypted and you can change your payment method at anytime.
+      </p>
+      <p class="description-bold">
+        Secure for peace of mind.<br />
+        Cancel easily online.
+      </p>
+      <div class="payment-options">
+        <div class="payment-option" role="button" tabindex="0">
+          <div class="left">
+            <span>Credit or Debit Card</span>
+            <img
+              src="https://storage.googleapis.com/a1aa/image/740d0a06-01aa-44e3-a64e-7e220da1297c.jpg"
+              alt="Visa card logo"
+            />
+            <img
+              src="https://storage.googleapis.com/a1aa/image/584d0295-fdca-4de7-2b08-ae3fc668bf3d.jpg"
+              alt="Mastercard logo"
+            />
+          </div>
+          <i class="fas fa-chevron-right" style="color:#4b5563;"></i>
+        </div>
+        <div class="payment-option" role="button" tabindex="0">
+          <div class="left">
+            <span>UPI AutoPay</span>
+            <img
+              src="https://storage.googleapis.com/a1aa/image/64e04a19-a03f-4249-ee26-fb014f4554a5.jpg"
+              alt="BHIM UPI logo"
+            />
+            <img
+              src="https://storage.googleapis.com/a1aa/image/d1d2de15-b1ec-4416-c412-695e423a41f1.jpg"
+              alt="Paytm logo"
+            />
+            <img
+              src="https://storage.googleapis.com/a1aa/image/8c1f882a-2b81-4c72-b700-233fb938ba03.jpg"
+              alt="PhonePe logo"
+            />
+            <img
+              src="https://storage.googleapis.com/a1aa/image/1f28830b-412b-44e9-0bba-58ae1ddf83ff.jpg"
+              alt="Amazon Pay logo"
+            />
+            <img
+              src="https://storage.googleapis.com/a1aa/image/5f96daa1-7adf-4afc-d626-86fc94fb2e57.jpg"
+              alt="Google Pay logo"
+            />
+          </div>
+          <i class="fas fa-chevron-right" style="color:#4b5563;"></i>
+        </div>
+      </div>
+      <p class="end-to-end">
+        End-to-end encrypted
+        <i class="fas fa-lock lock-small"></i>
+      </p>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="left">
+        <p>Questions? Call 000-800-919-1743</p>
+        <div class="links">
+          <a href="#">FAQ</a>
+          <a href="#">Help Centre</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy</a>
+          <a href="#">Cookie Preferences</a>
+          <a href="#">Corporate Information</a>
+        </div>
+      </div>
+      <div class="right">
+        <label for="language" class="sr-only">Select Language</label>
+        <select id="language" name="language" aria-label="Select Language">
+          <option>English</option>
+        </select>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

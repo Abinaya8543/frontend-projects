@@ -1,0 +1,275 @@
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Netflix Clone</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+<body>
+  <header>
+    <div>
+      <img
+        src="assets/images/logo.png"
+        alt="Netflix logo in red with black background"
+        width="160"
+        height="80"
+      />
+    </div>
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <button class="lang-btn" aria-label="Select language">
+        <i class="fas fa-globe-americas"></i> English <i class="fas fa-chevron-down" style="font-size:0.75rem;"></i>
+      </button>
+      <a href="./1 signin.html">
+      <button class="sign-in-btn">Sign In</button>
+    </a>
+
+    </div>
+  </header>
+
+  <section class="hero-section" aria-label="Hero section with Netflix shows collage background">
+    <img
+      src="assets/images/hero-image.webp"
+      alt="Collage of Netflix shows and movies with dark overlay and rounded corners"
+      class="bg-img"
+      width="1920"
+      height="600"
+      aria-hidden="true"
+    />
+    <div class="hero-content">
+      <h1>
+        Unlimited movies, TV<br />
+        shows and more
+      </h1>
+      <p class="subtitle">Starts at ₹149. Cancel at any time.</p>
+      <p class="description">
+        Ready to watch? Enter your email to create or restart your membership.
+      </p>
+      <form class="email-form" onsubmit="event.preventDefault()">
+        <input
+          type="email"
+          placeholder="Email address"
+          aria-label="Email address"
+          required
+          class="email-input"
+        />
+        <button type="submit" class="get-started-btn" aria-label="Get Started">
+          Get Started <i class="fas fa-chevron-right"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section class="trending-section" aria-label="Trending Now section">
+    <h2>Trending Now</h2>
+    <div class="trending-list">
+      <div class="trending-item">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/d1b82d98-b13b-4b8a-dc5b-9c7292f2803c.jpg"
+          alt="Trending movie 1 poster with fire and flames, action movie"
+          width="176"
+          height="264"
+        />
+        <span>1</span>
+      </div>
+      <div class="trending-item">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/ad274a9c-5a13-45fe-905e-4ff5d53218e5.jpg"
+          alt="Trending movie 2 poster with gavel and legal documents in courtroom"
+          width="176"
+          height="264"
+        />
+        <span>2</span>
+      </div>
+      <div class="trending-item">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/12f683db-49dc-4791-a92b-f4842bdad29a.jpg"
+          alt="Trending movie 3 black and white portrait of man with red glasses"
+          width="176"
+          height="264"
+        />
+        <span>3</span>
+      </div>
+      <div class="trending-item">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/0104d656-357b-4940-e3f2-0a0d99313b28.jpg"
+          alt="Trending movie 4 poster with green fire and throne in kingdom"
+          width="176"
+          height="264"
+        />
+        <span>4</span>
+      </div>
+      <div class="trending-item">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/8ba2af4a-9061-4a1d-d670-d96b5eab30dc.jpg"
+          alt="Trending movie 5 poster with colorful background and happy smiling couple"
+          width="176"
+          height="264"
+        />
+        <span>5</span>
+      </div>
+      <div class="trending-item">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/5069cbcb-fa53-4a01-527b-ffe0a96522a9.jpg"
+          alt="Trending movie 6 poster with man serious expression on dark background"
+          width="176"
+          height="264"
+        />
+        <span>6</span>
+      </div>
+      <div class="trending-item">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/04f2b8c6-a79d-4213-b3ca-65cb753a762c.jpg"
+          alt="Trending movie 7 poster with woman and man laughing indoors"
+          width="176"
+          height="264"
+        />
+        <span>7</span>
+      </div>
+      <div class="trending-item opacity-50">
+        <img
+          src="https://storage.googleapis.com/a1aa/image/70474ee4-7e71-41b6-6577-1640d28eb6f2.jpg"
+          alt="Trending movie 8 poster blurred dark background with number overlay"
+          width="176"
+          height="264"
+        />
+        <span>8</span>
+      </div>
+    </div>
+  </section>
+  <section class="like">
+  <h2>More reasons to join</h2>
+    <section class="reasons-grid">
+      <div class="reason-card">
+        <p class="reason-text">Cancel or switch plans anytime</p>
+        <img
+          alt="Handshake emoji icon with pink and red gradient colors"
+          class="reason-icon"
+          height="32"
+          loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/b00a55ee-3783-4741-947c-7b5b5520e71e.jpg"
+          width="32"
+        />
+      </div>
+      <div class="reason-card">
+        <p class="reason-text">A safe place just for kids</p>
+        <img
+          alt="Heart emoji icon with pink and red gradient colors"
+          class="reason-icon"
+          height="32"
+          loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/7537ca33-981c-4b71-9296-ad4c9a11f532.jpg"
+          width="32"
+        />
+      </div>
+      <div class="reason-card">
+        <p class="reason-text">Watch on your favourite devices</p>
+        <img
+          alt="Desktop computer emoji icon with pink and red gradient colors"
+          class="reason-icon"
+          height="32"
+          loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/a4b6da5e-e7b1-4de3-0bac-98423f836b6b.jpg"
+          width="32"
+        />
+      </div>
+      <div class="reason-card">
+        <p class="reason-text">Stories tailored to your taste</p>
+        <img
+          alt="Hand holding a red star emoji icon with pink and red gradient colors"
+          class="reason-icon"
+          height="32"
+          loading="lazy"
+          src="https://storage.googleapis.com/a1aa/image/6572ba7b-80aa-4d4a-8cb0-32b12e5a44c4.jpg"
+          width="32"
+        />
+      </div>
+    </section>
+  </section>
+  <section class="footer">
+    <h2>Frequently Asked Questions</h2>
+    <section class="faq-section">
+      <button class="faq-item" type="button" aria-expanded="false">
+        <span>What is Netflix?</span>
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="faq-item" type="button" aria-expanded="false">
+        <span>How much does Netflix cost?</span>
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="faq-item" type="button" aria-expanded="false">
+        <span>Where can I watch?</span>
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="faq-item" type="button" aria-expanded="false">
+        <span>How do I cancel?</span>
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="faq-item" type="button" aria-expanded="false">
+        <span>What can I watch on Netflix?</span>
+        <i class="fas fa-plus"></i>
+      </button>
+      <button class="faq-item" type="button" aria-expanded="false">
+        <span>Is Netflix good for kids?</span>
+        <i class="fas fa-plus"></i>
+      </button>
+    </section>
+  </section>
+    <div class="container">
+      <p class="heading-text">
+        Ready to watch? Enter your email to create or restart your membership.
+      </p>
+      <form class="email-form" action="#" method="POST" novalidate>
+        <input
+          type="email"
+          placeholder="Email address"
+          class="email-input"
+          required
+        />
+        <button type="submit" class="submit-btn">
+          Get Started <i class="fas fa-chevron-right"></i>
+        </button>
+      </form>
+  
+      <p class="questions">
+        Questions? Call
+        <a href="tel:000-800-919-1743">000-800-919-1743</a>
+      </p>
+  
+      <div class="links-grid">
+        <div class="links-column">
+          <a href="#">FAQ</a>
+          <a href="#">Investor Relations</a>
+          <a href="#">Privacy</a>
+          <a href="#">Speed Test</a>
+        </div>
+        <div class="links-column">
+          <a href="#">Help Centre</a>
+          <a href="#">Jobs</a>
+          <a href="#">Cookie Preferences</a>
+          <a href="#">Legal Notices</a>
+        </div>
+        <div class="links-column">
+          <a href="#">Account</a>
+          <a href="#">Ways to Watch</a>
+          <a href="#">Corporate Information</a>
+          <a href="#">Only on Netflix</a>
+        </div>
+        <div class="links-column">
+          <a href="#">Media Centre</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Contact Us</a>
+        </div>
+      </div>
+  
+      <button aria-label="Select Language" class="language-btn" type="button">
+        <i class="fas fa-globe"></i> English <i class="fas fa-chevron-down"></i>
+      </button>
+  
+      <p class="footer-text">Netflix India</p>
+    </div>
+ 
+
+</body>
+</html>

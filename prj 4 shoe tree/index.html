@@ -1,0 +1,600 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shoe Tree Navbar</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    /* Reset margin and padding */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+        /* overflow: hidden; */
+        overflow-x: hidden;
+    }
+
+    /* Top black bar */
+    .top-bar {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 0.875rem; /* 14px */
+      padding: 1rem 0; /* 4px top and bottom */
+      user-select: none;
+    }
+
+    /* Navbar container */
+    nav.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem; /* 16px top/bottom, 24px left/right */
+      background-color: #fff;
+    }
+
+    /* Logo */
+    .navbar .logo img {
+      height: 65px;
+      width: auto;
+      display: block;
+    }
+
+    /* Navigation links container */
+    .navbar .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem; /* 24px */
+      font-size: 1.5rem; /* 16px */
+      color: #000;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Each nav item with dropdown */
+    .nav-links .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem; /* 4px */
+      position: relative;
+    }
+
+    /* Hover underline effect */
+    .nav-links .nav-item:hover {
+      text-decoration: underline;
+    }
+
+    /* Dropdown arrow icon */
+    .nav-links .nav-item i.fa-chevron-down {
+      font-size: 0.75rem; /* 12px */
+    }
+
+    /* Icons on right */
+    .nav-links i.fa-search,
+    .nav-links i.fa-user,
+    .nav-links i.fa-shopping-cart {
+      font-size: 1.125rem; /* 18px */
+    }
+    .hero-img {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+
+    .hero-img img {
+     width: 100%;
+     height: auto;
+     display: block;
+     object-fit: cover;
+    }
+    /* new arrivals and best sellers */
+    .container {
+      max-width: 2000px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 50px;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    .header h2 {
+      font-size: 40px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: #000;
+      margin: 0;
+      margin-left: 5px;
+    }
+    .view-all-btn {
+      background-color: #000;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      border: none;
+      border-radius: 12px;
+      padding: 8px 24px;
+      cursor: pointer;
+    }
+    .cards {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none; /* Firefox */
+    }
+    .cards::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+    .card {
+      flex: 0 0 220px;
+      display: flex;
+      flex-direction: column;
+    }
+    .image-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 280px;
+    }
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .discount-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background-color: #2f6e0a;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 6px;
+      user-select: none;
+    }
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255 255 255 / 0.7);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-size: 16px;
+      user-select: none;
+    }
+    .nav-arrow.left {
+      left: 12px;
+    }
+    .nav-arrow.right {
+      right: 12px;
+    }
+    .brand {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 2px 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #666;
+      font-weight: 400;
+      user-select: none;
+    }
+    .brand.uppercase {
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .product-name {
+      margin: 6px 0 0 0;
+      font-size: 12px;
+      color: #444;
+      line-height: 1.3;
+    }
+    .price-row {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .price-current {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+    }
+    .price-old {
+      font-size: 12px;
+      color: #999;
+      text-decoration: line-through;
+    }
+    .choose-btn {
+      margin-top: 12px;
+      background-color: #000;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 0;
+      cursor: pointer;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .cards {
+        gap: 16px;
+      }
+      .card {
+        flex: 0 0 180px;
+      }
+      .image-wrapper {
+        height: 230px;
+      }
+    }
+
+    /* sale row */
+    .sale {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin: 0;
+      padding: 24px;
+      background: white;
+      box-sizing: border-box;
+    }
+
+    /* Top row */
+    .top-row {
+      display: flex;
+      flex-direction: column;
+      gap: -2px;
+    }
+
+    .car {
+     
+      color: white;
+      border-radius: 12px;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+      /* margin-left: 10px;
+     margin-right: 10px; */
+      
+    }
+    
+    .car img{
+      border-radius: 12px;
+     
+      width:400px;
+      height: 300px;
+      align-items: center;
+    }
+
+     .car.large-text.trending {
+      font-size: 56px;
+      line-height: 56px;
+      margin-bottom: 4px;
+    }
+
+    .car.medium-text {
+      font-family: 'Anton', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 28px;
+      margin: 0;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+    }
+
+    /* Bottom row */
+    .bottom-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    .image-card {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .image-card img {
+      width: 200%;
+      height: 70%;
+      /* height: auto; */
+      display: block;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .top-row {
+        flex-direction: row;
+      }
+      .bottom-row {
+        flex-direction: row;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    Sign In &amp; Get Flat Rs 250 /- Off on your First Purchase
+  </div>
+  <nav class="navbar">
+    <div class="logo">
+      <img
+        src="assets/logo.png"
+        alt="Shoe Tree logo with a stylized tree above the text 'SHOE TREE' in green and brown colors"
+        width="120"
+        height="60"
+      />
+    </div>
+    <div class="nav-links">
+      <div class="nav-item">
+        <span>Women</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="nav-item">
+        <span>Men</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="nav-item">
+        <span>Accessories</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="nav-item">
+        <span>Brands</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <i class="fas fa-search"></i>
+      <i class="far fa-user"></i>
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </nav>
+  <div class="hero-img">
+    <img src="assets/hero img.png">
+  </div>
+  <div class="container">
+    <div class="header">
+      <h2>NEW ARRIVALS</h2>
+      <button class="view-all-btn" type="button">View all</button>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/db1a58ce-3960-4a8e-2476-cb98c55a4a40.jpg" alt="Women wearing beige solid pumps standing near a brown decorative pot" />
+          <div class="discount-badge">25% Off</div>
+          <button class="nav-arrow left" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        </div>
+        <span class="brand">Jove</span>
+        <p class="product-name">Women Beige Solid Pumps</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,999.00</span>
+          <span class="price-old">Rs. 3,999.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/173395d3-0e62-4668-b94e-298733ce266b.jpg" alt="Black solid backstrap sandals on a light blue wooden background" />
+          <div class="discount-badge">40% Off</div>
+        </div>
+        <span class="brand">Ronnie Grey</span>
+        <p class="product-name">Women Black Solid Backstrap Sandals</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,099.00</span>
+          <span class="price-old">Rs. 3,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/8a1e08b4-d266-4059-36d8-24e282523bbd.jpg" alt="Women wearing black embellished pumps standing with a green plant in background" />
+          <div class="discount-badge">40% Off</div>
+        </div>
+        <span class="brand">Jove</span>
+        <p class="product-name">Women Black Embellished Pumps</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,699.00</span>
+          <span class="price-old">Rs. 4,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/d380cda4-c48d-4592-a1f4-84029284b6ea.jpg" alt="Men's black and blue animal print loafers placed on tiled and concrete floor" />
+          <div class="discount-badge">25% Off</div>
+        </div>
+        <span class="brand">Cobblerz</span>
+        <p class="product-name">Men Black & Blue Animal Print Loafers</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 10,499.00</span>
+          <span class="price-old">Rs. 13,999.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/c7ff1749-5f13-44db-a8ee-4ad93cce083f.jpg" alt="Women beige colourblock Mary Jane ballerinas placed on beige fabric with fringes" />
+          <div class="discount-badge">40% Off</div>
+          <button class="nav-arrow right" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <span class="brand uppercase">JOVE</span>
+        <p class="product-name">Women Beige Colourblock Mary Jane Ballerinas</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,099.00</span>
+          <span class="price-old">Rs. 3,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/c7ff1749-5f13-44db-a8ee-4ad93cce083f.jpg" alt="Women beige colourblock Mary Jane ballerinas placed on beige fabric with fringes" />
+          <div class="discount-badge">40% Off</div>
+          <button class="nav-arrow right" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <span class="brand uppercase">JOVE</span>
+        <p class="product-name">Women Beige Colourblock Mary Jane Ballerinas</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,099.00</span>
+          <span class="price-old">Rs. 3,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/c7ff1749-5f13-44db-a8ee-4ad93cce083f.jpg" alt="Women beige colourblock Mary Jane ballerinas placed on beige fabric with fringes" />
+          <div class="discount-badge">40% Off</div>
+          <button class="nav-arrow right" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <span class="brand uppercase">JOVE</span>
+        <p class="product-name">Women Beige Colourblock Mary Jane Ballerinas</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,099.00</span>
+          <span class="price-old">Rs. 3,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="header">
+      <h2>BEST SELLERS</h2>
+      <button class="view-all-btn" type="button">View all</button>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/db1a58ce-3960-4a8e-2476-cb98c55a4a40.jpg" alt="Women wearing beige solid pumps standing near a brown decorative pot" />
+          <div class="discount-badge">25% Off</div>
+          <button class="nav-arrow left" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+        </div>
+        <span class="brand">Jove</span>
+        <p class="product-name">Women Beige Solid Pumps</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,999.00</span>
+          <span class="price-old">Rs. 3,999.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/173395d3-0e62-4668-b94e-298733ce266b.jpg" alt="Black solid backstrap sandals on a light blue wooden background" />
+          <div class="discount-badge">40% Off</div>
+        </div>
+        <span class="brand">Ronnie Grey</span>
+        <p class="product-name">Women Black Solid Backstrap Sandals</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,099.00</span>
+          <span class="price-old">Rs. 3,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/8a1e08b4-d266-4059-36d8-24e282523bbd.jpg" alt="Women wearing black embellished pumps standing with a green plant in background" />
+          <div class="discount-badge">40% Off</div>
+        </div>
+        <span class="brand">Jove</span>
+        <p class="product-name">Women Black Embellished Pumps</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,699.00</span>
+          <span class="price-old">Rs. 4,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/d380cda4-c48d-4592-a1f4-84029284b6ea.jpg" alt="Men's black and blue animal print loafers placed on tiled and concrete floor" />
+          <div class="discount-badge">25% Off</div>
+        </div>
+        <span class="brand">Cobblerz</span>
+        <p class="product-name">Men Black & Blue Animal Print Loafers</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 10,499.00</span>
+          <span class="price-old">Rs. 13,999.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/c7ff1749-5f13-44db-a8ee-4ad93cce083f.jpg" alt="Women beige colourblock Mary Jane ballerinas placed on beige fabric with fringes" />
+          <div class="discount-badge">40% Off</div>
+          <button class="nav-arrow right" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <span class="brand uppercase">JOVE</span>
+        <p class="product-name">Women Beige Colourblock Mary Jane Ballerinas</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 2,099.00</span>
+          <span class="price-old">Rs. 3,499.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+      <div class="card">
+        <div class="image-wrapper">
+          <img src="https://storage.googleapis.com/a1aa/image/d380cda4-c48d-4592-a1f4-84029284b6ea.jpg" alt="Men's black and blue animal print loafers placed on tiled and concrete floor" />
+          <div class="discount-badge">25% Off</div>
+        </div>
+        <span class="brand">Cobblerz</span>
+        <p class="product-name">Men Black & Blue Animal Print Loafers</p>
+        <div class="price-row">
+          <span class="price-current">Rs. 10,499.00</span>
+          <span class="price-old">Rs. 13,999.00</span>
+        </div>
+        <button class="choose-btn" type="button">Choose options</button>
+      </div>
+    </div>
+  </div>
+  <div class="sale">
+    <div class="top-row">
+      <div class="car">
+       <img src="https://www.shoetree.io/cdn/shop/files/under_799_1.png?v=1736323796&width=1500" alt="import">
+      </div>
+      <div class="car">
+        <img src="https://www.shoetree.io/cdn/shop/files/Trending_Styles_Rs_799-1499_1.png?v=1736323797&width=1500" alt="2 import">
+      </div>
+      <div class="car">
+        <img src="https://www.shoetree.io/cdn/shop/files/New_Arrivals_1.png?v=1736323798&width=1500" alt="import 3">
+      </div>
+    </div>
+    <div class="bottom-row">
+      <div class="image-card">
+       <img src="https://www.shoetree.io/cdn/shop/files/men_600x400_1_2dd966fd-8ea9-4bcb-ba7f-404c012f8096.png?v=1736323784&width=1500" alt="for men">
+      </div>
+      <div class="image-card">
+       <img src="https://www.shoetree.io/cdn/shop/files/women_600x400_1_5b850145-0e0f-4d37-ab6e-1ca6f085bb15.png?v=1736323785&width=1500" alt="for women">
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+</body>
+</html>
+

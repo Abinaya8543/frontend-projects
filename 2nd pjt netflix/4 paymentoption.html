@@ -1,0 +1,376 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Netflix Payment Picker</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+    /* Container */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 64px 24px 0 24px;
+      text-align: center;
+    }
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    header img {
+      width: 151px;
+      height: 34px;
+      object-fit: contain;
+    }
+    header button {
+      font-weight: 600;
+      font-size: 14px;
+      color: #222;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    header button:hover {
+      text-decoration: underline;
+    }
+    /* Lock icon container */
+    .lock-icon-container {
+      border: 2px solid #e50914;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 24px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #e50914;
+    }
+    /* Step text */
+    .step-text {
+      font-size: 10px;
+      color: #555;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    /* Heading */
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: #222;
+    }
+    /* Paragraphs */
+    p {
+      font-size: 14px;
+      margin: 0 0 4px 0;
+      color: #222;
+    }
+    p.strong {
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    /* Encryption info */
+    .encryption-info {
+      font-size: 10px;
+      color: #a67c00;
+      text-align: right;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 4px;
+    }
+    /* Buttons container */
+    .payment-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 64px;
+    }
+    /* Payment button */
+    .payment-button {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      transition: box-shadow 0.2s ease;
+    }
+    .payment-button:hover {
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    }
+    .payment-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #222;
+    }
+    .payment-left img {
+      height: 20px;
+      width: auto;
+      object-fit: contain;
+    }
+    .payment-right {
+      color: #999;
+      font-size: 16px;
+    }
+    /* Footer */
+    footer {
+      background: #f2f2f2;
+      color: #666;
+      font-size: 12px;
+      padding: 50px;
+      margin-top: 170px;
+    }
+    footer p {
+      margin: 0 0 16px 0;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px 48px;
+      margin-bottom: 16px;
+    }
+    .footer-column {
+      min-width: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-column a {
+      color: #666;
+      font-size: 12px;
+    }
+    .footer-column a:hover {
+      text-decoration: underline;
+    }
+    /* Language selector */
+    .language-selector {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 6px 12px;
+      background: #fff;
+      color: #444;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .language-selector svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .language-selector i {
+      margin-left: 8px;
+      font-style: normal;
+      border: solid #444;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
+    }
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container {
+        padding: 48px 16px 0 16px;
+      }
+      footer {
+        padding: 16px;
+      }
+      .footer-links {
+        gap: 16px 24px;
+      }
+    }
+  </style>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<body>
+  <header>
+    <img
+      src="assets/images/logo.png"
+      alt="Netflix logo in red text"
+      width="1920"
+      height="1080"
+    />
+    <button type="button">Sign Out</button>
+  </header>
+  <main class="container" role="main">
+    <div class="lock-icon-container" aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <rect x="7" y="10" width="10" height="7" rx="2" ry="2"></rect>
+        <path d="M12 10V7a2 2 0 1 1 4 0v3"></path>
+      </svg>
+    </div>
+    <p class="step-text">STEP 4 OF 4</p>
+    <h1>Choose how to pay</h1>
+    <p>Your payment is encrypted and you can change your payment method at anytime.</p>
+    <p class="strong">
+      Secure for peace of mind.<br />
+      Cancel easily online.
+    </p>
+    <div class="encryption-info" aria-label="End-to-end encrypted">
+      <span>End-to-end encrypted</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        stroke="#a67c00"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="16"
+        height="16"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M12 15v2m0-8v2m-6 4h12a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2z"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+    </div>
+    <div class="payment-options">
+      <button class="payment-button" type="button"  onclick="window.location.href='5 payment.html'"aria-label="Pay with Credit or Debit Card">
+        <div class="payment-left">
+          <span>Credit or Debit Card</span>
+          <img
+            src="https://storage.googleapis.com/a1aa/image/c4c72e2c-f2d4-4abd-67cc-3339f2b4c221.jpg"
+            alt="Visa card logo in blue and white"
+            width="40"
+            height="20"
+          />
+          <img
+            src="https://storage.googleapis.com/a1aa/image/1a4d65e4-765a-4712-ce20-65cb75ec8a9e.jpg"
+            alt="Mastercard logo in red and orange"
+            width="40"
+            height="20"
+          />
+        </div>
+        <i class="fas fa-chevron-right payment-right" aria-hidden="true"></i>
+      </button>
+      <button class="payment-button" type="button"  onclick="window.location.href='5 payment.html'"aria-label="Pay with UPI AutoPay">
+        <div class="payment-left">
+          <span>UPI AutoPay</span>
+          <img
+            src="https://storage.googleapis.com/a1aa/image/8051c5e8-feb6-4098-9e4d-8217cab3ad85.jpg"
+            alt="BHIM UPI logo in gray and white"
+            width="40"
+            height="20"
+          />
+          <img
+            src="https://storage.googleapis.com/a1aa/image/149a3ab8-482a-4492-9523-26e8b6fae2d9.jpg"
+            alt="Paytm logo in blue and white"
+            width="40"
+            height="20"
+          />
+          <img
+            src="https://storage.googleapis.com/a1aa/image/4006bfeb-4190-4c13-898c-8fd81756047c.jpg"
+            alt="PhonePe logo in purple and white"
+            width="40"
+            height="20"
+          />
+          <img
+            src="https://storage.googleapis.com/a1aa/image/830fbce2-1a09-4a01-bcb7-ed4f045dcba5.jpg"
+            alt="Amazon Pay logo in dark blue and white"
+            width="40"
+            height="20"
+          />
+          <img
+            src="https://storage.googleapis.com/a1aa/image/5434503c-38d1-4a84-f637-3217589d8fa3.jpg"
+            alt="Google Pay logo in blue and white"
+            width="40"
+            height="20"
+          />
+        </div>
+        <i class="fas fa-chevron-right payment-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </main>
+  <footer>
+    <p>Questions? Call 000-800-919-1743</p>
+    <div class="footer-links" role="contentinfo">
+      <div class="footer-column">
+        <a href="#" tabindex="0">FAQ</a>
+        <a href="#" tabindex="0">Cookie Preferences</a>
+      </div>
+      <div class="footer-column">
+        <a href="#" tabindex="0">Help Centre</a>
+        <a href="#" tabindex="0">Corporate Information</a>
+      </div>
+      <div class="footer-column">
+        <a href="#" tabindex="0">Terms of Use</a>
+      </div>
+      <div class="footer-column">
+        <a href="#" tabindex="0">Privacy</a>
+      </div>
+    </div>
+    <button class="language-selector" aria-label="Select Language">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"></circle>
+        <path
+          d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          fill="none"
+        ></path>
+      </svg>
+      English
+      <i></i>
+    </button>
+  </footer>
+</body>
+</html>

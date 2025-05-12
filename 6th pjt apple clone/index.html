@@ -1,0 +1,173 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apple Navbar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Icons",
+        "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #1d1d1f;
+    }
+    nav {
+      border-bottom: 1px solid #d1d1d6;
+      max-width: 2000px;
+      margin: 0 auto;
+      padding: 0 16px;
+      background-color:#F5F5F7;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+      margin-left: 300px;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 10px;
+      font-weight: 400;
+    }
+    .nav-left a {
+      color: #1d1d1f;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-left a:hover {
+      text-decoration: underline;
+    }
+    .nav-left img {
+      width: 16px;
+      height: 20px;
+      display: block;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #1d1d1f;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .nav-right button {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      padding: 0;
+      font-size: 16px;
+    }
+    .nav-right button:hover {
+      color: #555555;
+    }
+    .info-bar {
+      border-bottom: 1px solid #d1d1d6;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 8px 16px;
+      font-size: 14px;
+      text-align: center;
+      color: #1d1d1f;
+      font-feature-settings: "tnum";
+    }
+    .info-bar a {
+      color: #0071e3;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .info-bar a:hover {
+      text-decoration: underline;
+    }
+    .superscript {
+      font-size: 10px;
+      vertical-align: super;
+      line-height: 0;
+    }
+    .icon-plus-circle {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    @media (max-width: 768px) {
+      .nav-left {
+        gap: 12px;
+        font-size: 12px;
+      }
+      .nav-right {
+        gap: 12px;
+        font-size: 14px;
+      }
+      .info-bar {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/cf0379dd-c712-46c6-7d9f-0b40863171cd.jpg"
+            alt="Apple logo black icon"
+            width="16"
+            height="20"
+          />
+        </a>
+        <a href="#">Store</a>
+        <a href="#">Mac</a>
+        <a href="#">iPad</a>
+        <a href="#">iPhone</a>
+        <a href="#">Watch</a>
+        <a href="#">AirPods</a>
+        <a href="#">TV &amp; Home</a>
+        <a href="#">Entertainment</a>
+        <a href="#">Accessories</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="nav-right">
+        <button aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <button aria-label="Shopping Bag">
+          <i class="fas fa-shopping-bag"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="info-bar">
+    Get up to 12 months of No Cost EMI<span class="superscript">§</span> plus up to ₹8000.00 instant cashback<span class="superscript">§§</span> on selected products with eligible cards.
+    <a href="#">
+      See offers
+      <svg
+        class="icon-plus-circle"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="16"></line>
+        <line x1="8" y1="12" x2="16" y2="12"></line>
+      </svg>
+    </a>
+  </div>
+</body>
+</html>

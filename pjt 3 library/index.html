@@ -1,0 +1,1213 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Open Library</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: #dcd6bd;
+      font-family: Arial, sans-serif;
+      color: #2a2a26;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+
+    /* Top bar */
+    .top-bar {
+      background-color: #2a2a26;
+      color: white;
+      font-size: 0.875rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.25rem 1rem;
+      font-family: Arial, sans-serif;
+    }
+    .top-bar button.donate {
+      background-color: #3a3a36;
+      padding: 0.125rem 0.75rem;
+      border-radius: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: background-color 0.3s;
+      font-weight: 500;
+    }
+    .top-bar button.donate:hover {
+      background-color: #4a4a46;
+    }
+    .top-bar button.donate span {
+      color: #e3342f;
+    }
+    .top-bar .lang-btn {
+      background-color: #3a3a36;
+      padding: 0.125rem 0.75rem;
+      border-radius: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: background-color 0.3s;
+      font-weight: 500;
+    }
+    .top-bar .lang-btn:hover {
+      background-color: #4a4a46;
+    }
+    .top-bar .lang-btn img {
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+    }
+    .top-bar .lang-btn i {
+      font-size: 0.75rem;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      font-family: 'EB Garamond', serif;
+      color: #2a2a26;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .logo-container img {
+      height: 28px;
+      width: 90px;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      font-family: 'EB Garamond', serif;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+    }
+    nav a {
+      color: #2a2a26;
+      font-weight: 400;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .browse-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: #2a2a26;
+      cursor: pointer;
+      font-weight: 400;
+    }
+    .browse-btn i {
+      font-size: 0.75rem;
+    }
+    .search-form {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: white;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 0.25rem 0.5rem;
+    }
+    .search-form select {
+      border: none;
+      outline: none;
+      font-size: 0.875rem;
+      color: #4b5563;
+      cursor: pointer;
+      background: transparent;
+      appearance: none;
+      padding-right: 0.25rem;
+    }
+    .search-form input[type="search"] {
+      border: none;
+      outline: none;
+      font-size: 0.875rem;
+      color: #4b5563;
+      width: 150px;
+    }
+    .search-form button {
+      background: none;
+      border: none;
+      color: #4b5563;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0;
+    }
+    .search-form button:hover {
+      color: #1f2937;
+    }
+    .login-link {
+      color: #2a2a26;
+      font-weight: 400;
+    }
+    .login-link:hover {
+      text-decoration: underline;
+    }
+    .signup-btn {
+      background-color: #0a71c5;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .signup-btn:hover {
+      background-color: #095a9e;
+    }
+    .menu-btn {
+      font-size: 1.5rem;
+      color: #2a2a26;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Responsive menu button */
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+      nav > a:not(.signup-btn):not(.login-link),
+      .browse-btn,
+      .search-form {
+        display: none;
+      }
+    }
+
+    /* Main content */
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Welcome section */
+    .welcome-section {
+      background-color: white;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .welcome-section h2 {
+      color: #0a71c5;
+      font-family: Arial, sans-serif;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+    .welcome-section .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+    .welcome-section .nav-btn.prev {
+      left: 0.5rem;
+      background-color: #c6defc;
+      color: #0a71c5;
+      transition: background-color 0.3s;
+    }
+    .welcome-section .nav-btn.prev:hover {
+      background-color: #a3c7f9;
+    }
+    .welcome-section .nav-btn.next {
+      right: 0.5rem;
+      background-color: #0a71c5;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    .welcome-section .nav-btn.next:hover {
+      background-color: #095a9e;
+    }
+    .welcome-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .welcome-cards {
+        flex-direction: row;
+        gap: 1.5rem;
+      }
+    }
+    .welcome-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+      max-width: 22rem;
+      flex: 1;
+    }
+    .welcome-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .welcome-card h3 {
+      font-family: Arial, sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      margin: 0 0 0.25rem 0;
+    }
+    .welcome-card p {
+      font-family: Arial, sans-serif;
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin: 0;
+      line-height: 1.25rem;
+    }
+
+    /* Trending section */
+    .trending-section {
+      background-color: #e9e2c9;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      padding: 1rem;
+    }
+    .trending-section a.trending-link {
+      color: #0a71c5;
+      font-family: Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: underline;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .trending-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+    }
+    .trending-container button.nav-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 9999px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .trending-container button.nav-btn.prev {
+      background-color: #c6defc;
+      color: #0a71c5;
+    }
+    .trending-container button.nav-btn.prev:hover {
+      background-color: #a3c7f9;
+    }
+    .trending-container button.nav-btn.next {
+      background-color: #0a71c5;
+      color: white;
+    }
+    .trending-container button.nav-btn.next:hover {
+      background-color: #095a9e;
+    }
+    .trending-list {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+      flex-wrap: nowrap;
+      padding-bottom: 0.25rem;
+      flex: 1;
+    }
+    .trending-list::-webkit-scrollbar {
+      display: none;
+    }
+    .trending-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 120px;
+      flex-shrink: 0;
+    }
+    .trending-item img {
+      width: 120px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 0.125rem;
+    }
+    .trending-item button.status-btn {
+      background-color: #4b5563;
+      color: white;
+      border-radius: 0.375rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: none;
+      cursor: default;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      overflow-x: visible;
+      padding-left: 60px; /* space for left arrow */
+      padding-right: 60px; /* space for right arrow */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .carousel-list {
+      display: flex;
+      gap: 3rem;
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+      max-width: calc(100vw - 120px);
+    }
+    .carousel-list::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    .carousel-list li {
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .carousel-button.left {
+      left: 10px;
+      background-color: #a9c9e2;
+    }
+    .carousel-button.right {
+      right: 10px;
+      background-color: #1f7dbf;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <button class="donate" type="button">
+      Donate <span>♥</span>
+    </button>
+    <button class="lang-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+      English (en)
+      <img
+        src="https://storage.googleapis.com/a1aa/image/1e10757a-e500-47ed-7797-2cf2e291475d.jpg"
+        alt="Language icon globe"
+        width="16"
+        height="16"
+      />
+      <i class="fas fa-caret-down"></i>
+    </button>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img
+        src="https://storage.googleapis.com/a1aa/image/377d452e-8e2d-49bd-28d3-ee745e743139.jpg"
+        alt="Blue tag with text OPEN"
+        width="90"
+        height="30"
+      />
+      <span class="logo-text">LIBRARY</span>
+    </div>
+    <nav>
+      <a href="#">My Books</a>
+      <button class="browse-btn" aria-haspopup="true" aria-expanded="false" type="button">
+        Browse <i class="fas fa-caret-down"></i>
+      </button>
+      <form class="search-form" role="search">
+        <select aria-label="Select search category" name="search-category">
+          <option>All</option>
+        </select>
+        <input type="search" placeholder="Search" aria-label="Search input" />
+        <button type="submit" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <button type="button" aria-label="Scan barcode">
+          <i class="fas fa-barcode"></i>
+        </button>
+      </form>
+      <a href="#" class="login-link">Log In</a>
+      <a href="#" class="signup-btn">Sign Up</a>
+      <button class="menu-btn" aria-label="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <section class="welcome-section" aria-label="Welcome to Open Library">
+      <h2>Welcome to Open Library</h2>
+      <button class="nav-btn prev" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="welcome-cards">
+        <article class="welcome-card">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/8cb7b8f8-fd80-485a-06d7-1dd56f8f4134.jpg"
+            alt="Icon of a computer monitor with an open book and mouse"
+            width="80"
+            height="80"
+          />
+          <div>
+            <h3>Read Free Library Books Online</h3>
+            <p>Millions of books available through Controlled Digital Lending</p>
+          </div>
+        </article>
+        <article class="welcome-card">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/4d263b5f-79d5-4d22-dc40-13cb244161a3.jpg"
+            alt="Icon of a calendar with a checkmark"
+            width="80"
+            height="80"
+          />
+          <div>
+            <h3>Set a Yearly Reading Goal</h3>
+            <p>Learn how to set a yearly reading goal and track what you read</p>
+          </div>
+        </article>
+        <article class="welcome-card">
+          <img
+            src="https://storage.googleapis.com/a1aa/image/6e331bc8-9ce1-436f-5e90-3f810e431503.jpg"
+            alt="Icon of a bookshelf with books"
+            width="80"
+            height="80"
+          />
+          <div>
+            <h3>Keep Track of your Favorite Books</h3>
+            <p>Organize your Books using Lists &amp; the Reading Log</p>
+          </div>
+        </article>
+      </div>
+      <button class="nav-btn next" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </section>
+<!-- trending 1 -->
+    <section class="trending-section" aria-label="Trending Books">
+      <a href="#" class="trending-link">Trending Books</a>
+      <div class="trending-container">
+        <button class="nav-btn prev" aria-label="Previous">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <ul class="trending-list" role="list">
+          <li class="trending-item">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+              alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+              width="120"
+              height="180"
+              
+            />
+            <button class="status-btn" type="button">Checked Out</button>
+          </li>
+          <li class="trending-item">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+              alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+              width="120"
+              height="180"
+         
+            />
+            <button class="status-btn" type="button">Not in Library</button>
+          </li>
+          <li class="trending-item">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+              alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+              width="120"
+              height="180"
+           
+            />
+            <button class="status-btn" type="button">Not in Library</button>
+          </li>
+          <li class="trending-item">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+              alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+              width="120"
+              height="180"
+            
+            />
+            <button class="status-btn" type="button">Checked Out</button>
+          </li>
+          <li class="trending-item">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+              alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+              width="120"
+              height="180"
+            
+            />
+            <button class="status-btn" type="button">Checked Out</button>
+          </li>
+          <li class="trending-item">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+              alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+              width="120"
+              height="180"
+            />
+            <button class="status-btn" type="button">Not in Library</button>
+          </li>
+        </ul>
+        <button class="nav-btn next" aria-label="Next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+    <!-- classic 2 -->
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Classic Books</a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+      <!-- books we love 3 -->
+      
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Books we love</a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+      <!-- recently returned 3 -->
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Recently Returned </a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+      <!-- romance -->
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Romance</a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+      <!-- kids -->
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Kids</a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+      <!-- thrillers -->
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Thrillers</a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+      <!-- textbooks -->
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Text Books</a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+        <!-- Authors alliance& MIT press -->
+    <section class="trending-section" aria-label="Trending Books">
+        <a href="#" class="trending-link">Authors Alliance & MIT Press</a>
+        <div class="trending-container">
+          <button class="nav-btn prev" aria-label="Previous">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <ul class="trending-list" role="list">
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/6b9c8839-d74b-408b-b008-c3b3a48afb63.jpg"
+                alt="Book cover of Robert Jordan's La Roue du Temps, fantasy novel with a golden figure and sun"
+                width="120"
+                height="180"
+                
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/f590804a-35c9-46e1-38ba-a4c78c2a15c0.jpg"
+                alt="Book cover of The Seven Husbands of Evelyn Hugo by Taylor Jenkins Reid, green dress with woman"
+                width="120"
+                height="180"
+           
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/7eae2815-68bf-4c05-0222-d3ab74d87e48.jpg"
+                alt="Book cover of Rich Dad Poor Dad by Robert T. Kiyosaki, man in suit smiling"
+                width="120"
+                height="180"
+             
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/3f34eef8-be8f-46b9-3af9-af117ec809a2.jpg"
+                alt="Book cover of Game of Thrones by George R. R. Martin, fantasy novel with knight on horse"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cbb70b64-ea8d-4f44-e5af-c75b0eccdddc.jpg"
+                alt="Book cover of Fifty Shades of Grey by E L James, dark cover with knitted pattern"
+                width="120"
+                height="180"
+              
+              />
+              <button class="status-btn" type="button">Checked Out</button>
+            </li>
+            <li class="trending-item">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/cc882bda-0ba1-4e94-8799-8c45fceaf9e9.jpg"
+                alt="Book cover of I don't love you anymore by Rithvik Singh, yellow cover with white flowers"
+                width="120"
+                height="180"
+              />
+              <button class="status-btn" type="button">Not in Library</button>
+            </li>
+          </ul>
+          <button class="nav-btn next" aria-label="Next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+  </main>
+  
+</body>
+</html>

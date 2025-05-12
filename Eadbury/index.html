@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lo'real</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .header img {
+            width: 100%;
+            height: auto;
+        }
+        .header .overlay {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .header .overlay .title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .header .overlay .subtitle {
+            font-size: 1rem;
+            font-weight: bolder;
+        }
+        .header .overlay nav {
+            margin-top: 1rem;
+        }
+        .header .overlay nav a {
+            color: white;
+            /* margin: 0 20px; */
+            text-decoration: none;
+            font-size: 0.875rem;
+            gap: 15px;
+        }
+        /* nav */
+        body {
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 30px;
+      background-color: #f5f5f5;
+      padding: 15px 40px;
+      position: relative;
+      color:#000
+    }
+
+    .nav-item {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      border-top: 1px solid #ccc;
+      padding: 40px 80px;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      z-index: 999;
+    }
+
+    .mega-menu h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .mega-menu ul {
+      list-style-type: none;
+    }
+
+    .mega-menu li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .show {
+      display: grid !important;
+    }
+    /* nav link closed */
+        .header .overlay nav a:hover {
+            color: #ccc;
+        }
+        .content {
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .content .text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .content .text h2 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .content .text h1 {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .content .text p {
+            color: #4A4A4A;
+            margin-bottom: 2rem;
+        }
+        /* .content .products {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        } */
+        .product {
+            text-align: center;
+        }
+        .product img{
+          height: 120px;
+          width: 120px;
+        }
+        .products{
+          display: flex;
+          justify-content: end;
+          position: relative;
+          gap: 100px;
+          bottom: 130px;
+        }
+        .product img {
+            margin-bottom: 1rem;
+        }
+        .product h3 {
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .product p {
+            color: #4A4A4A;
+            font-size: 15px;
+        }
+        .product .stars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        .product .stars i {
+            color: black;
+        }
+        .product .stars .gray {
+            color: #ccc;
+        }
+        .product .view-product {
+            margin-top: 0.5rem;
+            color: black;
+        }
+        .cream{
+          height: 120px;
+          width: 120px;
+        }
+        .content{
+          display: flex;
+        }
+
+        body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.header img {
+    width: 100%;
+    height: auto;
+}
+
+.header .overlay {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.header .overlay .title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.header .overlay .subtitle {
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.header .overlay nav {
+    margin-top: 1rem;
+}
+
+.header .overlay nav a {
+    /* color: white; */
+    text-decoration: none;
+    font-size: 0.800rem;
+    gap: 15px;
+}
+
+.header .overlay nav a:hover {
+    color: #ccc;
+}
+
+.content {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content .text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.content .text h2 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.content .text h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.content .text p {
+    color: #4A4A4A;
+    margin-bottom: 2rem;
+}
+
+.product {
+    text-align: center;
+}
+
+.product img {
+    height: 120px;
+    width: 120px;
+    margin-bottom: 1rem;
+}
+
+.products {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    gap: 100px;
+    bottom: 130px;
+}
+
+.product h3 {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.product p {
+    color: #4A4A4A;
+    font-size: 15px;
+}
+
+.product .stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.product .stars i {
+    color: black;
+}
+
+.product .stars .gray {
+    color: #ccc;
+}
+
+.product .view-product {
+    margin-top: 0.5rem;
+    color: black;
+}
+
+.cream {
+    height: 120px;
+    width: 120px;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-section {
+    width: 40%;
+}
+
+.left-section h2 {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.discover {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.right-section {
+    display: flex;
+    gap: 20px;
+    width: 60%;
+}
+
+.box {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 33%;
+}
+
+.box img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.box h3 {
+    margin: 10px 0;
+}
+
+.box p {
+    font-size: 14px;
+}
+
+.box button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width:100px;
+    height:100px;
+}
+/* black container */
+
+.container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      background-color: black;
+      color: white;
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 80px;
+      }
+    }
+
+    .left-section {
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .logo-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      background: linear-gradient(
+        45deg,
+        #f7c6a4 0%,
+        #f7c6a4 50%,
+        #d92f4a 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-inner-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      background-color: black;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    .heading {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .discover-link {
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      width: max-content;
+    }
+
+    .discover-link:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .cards {
+        flex-direction: row;
+        gap: 32px;
+      }
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      max-width: 220px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: black;
+    }
+
+    .card img.main-img {
+      border-radius: 12px;
+      margin-bottom: 24px;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card img.logo-img {
+      margin-bottom: 12px;
+      width: 120px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .card p {
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.4;
+    }
+
+    .card button {
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      color: black;
+      cursor: pointer;
+      padding: 0;
+    }
+    /* shampoo */
+    .container-custom {
+      max-width: 1000px;
+      padding: 5rem 1.5rem;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      gap: 3rem;
+      align-items: center;
+      margin: 0 auto;
+    }
+    .left-section {
+      max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 3rem;
+      flex-shrink: 0;
+    }
+    .left-section h3 {
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      margin-left: 10px;
+    }
+    .left-section h1 {
+      font-weight: 800;
+      font-size: 2.5rem;
+      line-height: 1.1;
+      margin: 0;
+    }
+    .left-section a {
+      margin-top: 5rem;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: black;
+      text-decoration: none;
+      width: max-content;
+    }
+    .left-section a:hover {
+      text-decoration: underline;
+    }
+    .cards-wrapper {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: nowrap;
+      justify-content: center;
+      flex-grow: 1;
+    }
+    .card-custom {
+      border-radius: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      max-width: 110px;
+      text-align: center;
+      padding: 2rem;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-custom img {
+      margin-bottom: 2rem;
+      max-width: 180px;
+      height: 150px;
+      object-fit: contain;
+    }
+    .product-subtitle {
+      font-weight: 600;
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+    .product-title {
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .star-filled {
+      width: 20px;
+      height: 20px;
+      fill: black;
+    }
+    .star-empty {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: #9ca3af;
+      stroke-width: 1.5;
+    }
+    .rating-text {
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-left: 0.5rem;
+      color: black;
+    }
+    .btn-link-custom {
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: black;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .btn-link-custom:hover {
+      text-decoration: underline;
+      color: black;
+    }
+    @media (max-width: 991px) {
+      .container-custom {
+        flex-wrap: wrap;
+        padding: 3rem 1rem;
+      }
+      .left-section {
+        margin-right: 0;
+        margin-bottom: 3rem;
+        max-width: 100%;
+        text-align: center;
+      }
+      .cards-wrapper {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+      }
+      .card-custom {
+        max-width: 100%;
+        width: 280px;
+      }
+    }
+    @media (max-width: 480px) {
+      .card-custom {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    /* benifits */
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 10vh;
+      /* max-width: 140vw; */
+      background-color: black;
+      color: white;
+      overflow-x: hidden;
+      padding: 80px 24px;
+      max-width: 1500px;
+    }
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+      }
+    }
+    .left {
+      width: 100%;
+      padding: 2rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .left {
+        width: 33.3333%;
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+    .left h2 {
+      font-weight: 800;
+      font-size: 1rem;
+      max-width: 20rem;
+      line-height: 1.2;
+      margin: 0;
+      margin-top: 5rem;
+    }
+    @media (min-width: 768px) {
+      .left h2 {
+        font-size: 1rem;
+        max-width: 24rem;
+      }
+    }
+    .left p {
+      font-weight: 400;
+      font-size: 1.5rem;
+      max-width: 20rem;
+      margin: 0;
+    }
+    @media (min-width: 768px) {
+      .left p {
+        font-size: 1.125rem;
+        max-width: 24rem;
+      }
+    }
+    .see-all-btn {
+      margin-top: 22rem;
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 0;
+      align-self: flex-start;
+    }
+    .right {
+      width: 100%;
+      overflow-x: auto;
+      padding: 2rem 0 2rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: white black;
+    }
+    @media (min-width: 768px) {
+      .right {
+        width: 66.6667%;
+        padding-right: 0;
+      }
+    }
+    .right::-webkit-scrollbar {
+      height: 6px;
+    }
+    .right::-webkit-scrollbar-track {
+      background: black;
+    }
+    .right::-webkit-scrollbar-thumb {
+      background-color: white;
+      border-radius: 10px;
+    }
+    .cards {
+      display: flex;
+      gap: 1.5rem;
+      min-width: 1200px;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 0.5rem;
+      width: 12rem;
+      flex-shrink: 0;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 768px) {
+      .card {
+        width: 14rem;
+      }
+    }
+    .card img {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+    .card-text {
+      padding: 1rem;
+      color: black;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.3;
+      flex-grow: 1;
+    }
+    @media (min-width: 768px) {
+      .card-text {
+        font-size: 1rem;
+      }
+    }
+    </style>
+
+<body>
+    <header class="header">
+        <img src="https://www.lorealparis.co.in/-/media/project/loreal/brand-sites/oap/apac/in/banners/homepage-content-push/1920-x-800-website-center.jpg?rev=d6ea135eddc54b96b05eb195669b2e2a&cx=0.46&cy=0.43&cw=2000&ch=800&hash=D4ABC46DE97D8DF108E3A8D6A14FE4BA013903D7" alt="Woman applying skincare product">
+        <div class="overlay">
+            <div class="title">L'ORÉAL</div>
+            <div class="subtitle">PARIS</div>
+            <!-- <nav links -->
+              <div class="navbar">
+                <div class="nav-item" onclick="toggleMegaMenu()">Skin Care</div>
+                <div class="nav-item">Hair Care</div>
+                <div class="nav-item">Hair Colour</div>
+                <div class="nav-item">Makeup</div>
+                <div class="nav-item">Virtual Beauty Tools</div>
+                <div class="nav-item">Our Purpose</div>
+                <div class="nav-item">Beauty Magazine</div>
+              
+                <div id="megaMenu" class="mega-menu">
+                  <div>
+                    <h4>Face Care</h4>
+                    <ul>
+                      <li>Serums</li>
+                      <li>Eye Serums</li>
+                      <li>Moisturizers/Creams</li>
+                      <li>Cleansers</li>
+                      <li>Essence</li>
+                      <li>Face Masks</li>
+                      <li>Sunscreen</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Skin Concerns</h4>
+                    <ul>
+                      <li>Dark Spots</li>
+                      <li>Dark Circles</li>
+                      <li>Skin Brightening</li>
+                      <li>Dry Skin</li>
+                      <li>Oil Control</li>
+                      <li>Anti Fine Lines</li>
+                      <li>Anti Wrinkles</li>
+                      <li>Sun Protection</li>
+                      <li>Dehydrated Skin</li>
+                      <li>Dull Skin</li>
+                      <li>Hyper Pigmentation</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Ingredients</h4>
+                    <ul>
+                      <li>Melasyl</li>
+                      <li>Hyaluronic Acid</li>
+                      <li>Glycolic Acid</li>
+                      <li>Niacinamide</li>
+                      <li>Retinol</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Our Face Care Brands</h4>
+                    <ul>
+                      <li>Glycolic Bright</li>
+                      <li>Crystal</li>
+                      <li>Hyaluronic Acid</li>
+                      <li>Revitalift</li>
+                    </ul>
+                    <h4>Our Sunscreen Brands</h4>
+                    <ul>
+                      <li><li>UV Defender</li></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+    </header>
+    <!-- alia bhat container -->
+    <main class="content">
+        <div class="text">
+            <h2>Melasyl™ - L'Oréal’s multi-patented molecule for Superior Dark Spot Reduction</h2>
+            <h1>Experience the unique pigment fading efficacy of Melasyl™</h1>
+            <p>Start your glowing skin journey with products that...</p>
+        </div>
+        <div class="products">
+            <div class="product">
+                <img src="assets/glycolic---bright---10-glycolic-_-dsb-_serum_pack.webp" alt="Glycolic Bright Dark Spot Cream" width="150" height="150">
+                <div class="cream">
+                  <h3> Glycolic Bright</h3>
+                  <p> L'Oréal Paris Glycolic Bright Dark Spot Brightening Serum</p>
+                  <div class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star gray"></i>
+                      <span class="ml-2">4/5</span>
+                  </div>
+                  <p class="view-product">VIEW PRODUCT</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="assets/glowing bright  daycream  2.webp" alt="Glycolic Bright Day Cream" width="150" height="150">
+                <div class="cream">
+                  <h3>Glycolic Bright</h3>
+                  <p>L'Oréal Paris Glycolic Bright Day Cream With SPF 17</p>
+                  <div class="stars">
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <span class="ml-2">0/5</span>
+                  </div>
+                  <p class="view-product">VIEW PRODUCT</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="assets/glowing night.webp" alt="Glycolic Bright Glowing Night Cream" width="150" height="150">
+                <div class="cream">
+                  <h3>Glycolic Bright</h3>
+                  <p>L'Oréal Paris Glycolic Bright Glowing Night Cream</p>
+                  <div class="stars">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <span class="ml-2">5/5</span>
+                  </div>
+                  <p class="view-product">VIEW PRODUCT</p>
+                </div>
+            </div>
+            <div class="product">
+                <img src="assets/bright foaming cream.webp" alt="Glycolic Bright Daily Foaming Cream" width="150" height="150">
+                <div class="cream">
+                  <h3>Glycolic Bright</h3>
+                  <p>L'Oréal Paris Glycolic Bright Daily Foaming Cream Face Cleanser</p>
+                  <div class="stars">
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <i class="fas fa-star gray"></i>
+                      <span class="ml-2">0/5</span>
+                  </div>
+                  <p class="view-product">VIEW PRODUCT</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- black container -->
+    <div class="container">
+        <div class="left-section">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="logo-circle">
+              <div class="logo-inner-circle"></div>
+            </div>
+            <h3 class="logo-text">Online tools</h3>
+          </div>
+          <h1 class="heading">
+            Beauty is smarter<br />
+            now
+          </h1>
+          <a href="#" class="discover-link">Discover all online tools</a>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <img
+              src="assets/SkinGenius image.png"
+              alt="Woman with skin analysis dots on face wearing white gloves"
+              class="main-img"
+              width="150"
+              height="150"
+            />
+            <img
+              src="assets/logo-skin-genius text 1.webp"
+              alt="Skin Genius logo with red corner brackets"
+              class="logo-img"
+              width="80px"
+              height="80px"
+            />
+            <p>
+              Analyze your skin and discover your daily skin care routine with our
+              routine finder
+            </p>
+            <button>Click here to try now</button>
+          </div>
+          <div class="card">
+            <img
+              src="assets/hair-color-tryon image.webp"
+              alt="Woman with half hair color change effect"
+              class="main-img"
+              width="180"
+              height="180"
+            />
+            <img
+              src="assets/logo-haircolortryon text.webp"
+              alt="Hair Color Try On logo with brown and black text and corner brackets"
+              class="logo-img"
+              width="120"
+              height="40"
+            />
+            <p>Test your favorite hair color virtually</p>
+            <button>Click here to try now</button>
+          </div>
+          <div class="card">
+            <img
+              src="assets/make up try on image.webp"
+              alt="Woman with half makeup try on effect"
+              class="main-img"
+              width="180"
+              height="180"
+            />
+            <img
+              src="assets/logo-makeuptryon text.webp"
+              alt="Makeup Try On logo with pink and black text and corner brackets"
+              class="logo-img"
+              width="120"
+              height="40"
+            />
+            <p>Test your favorite make-up virtually</p>
+            <button>Click here to try now</button>
+          </div>
+        </div>
+      </div>
+      <div class="container-custom">
+        <div class="left-section">
+          <h3>Explore</h3>
+          <h1>Hyaluron Moisture Range</h1>
+          <a href="#">See all haircare products</a>
+        </div>
+        <div class="cards-wrapper">
+          <!-- Card 1 -->
+          <div class="card-custom">
+            <img src="assets/hyaluron hydra.jpg" alt="Bottle of L'Oreal Hyaluron Moisture 72H Moisture Sealing Conditioner in purple packaging" />
+            <p class="product-subtitle">Hyaluron Moisture</p>
+            <h2 class="product-title">HYALURON MOISTURE 72H MOISTURE SEALING CONDITIONER (180 ML)</h2>
+            <div class="rating">
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <span class="rating-text">5/5</span>
+            </div>
+            <button class="btn-link-custom" type="button">View Product</button>
+          </div>
+          <!-- Card 2 -->
+          <div class="card-custom">
+            <img src="assets/hyaluron moisture -180.jpg" alt="Tube of L'Oreal Hyaluron Moisture Hydra Filling Night Cream in purple packaging" />
+            <p class="product-subtitle">Hyaluron Moisture</p>
+            <h2 class="product-title">HYALURON MOISTURE HYDRA FILLING NIGHT CREAM (180 ML)</h2>
+            <div class="rating" style="color:#9ca3af;">
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <span class="rating-text" style="color:#000;">0/5</span>
+            </div>
+            <button class="btn-link-custom" type="button">View Product</button>
+          </div>
+          <!-- Card 3 -->
+          <div class="card-custom">
+            <img src="assets/hyaluron filling shampoo  3.webp" alt="Bottle of L'Oreal Paris Hyaluron Moisture 72H Moisture Filling Shampoo in purple packaging" />
+            <p class="product-subtitle">Hyaluron Moisture</p>
+            <h2 class="product-title">L'ORÉAL PARIS HYALURON MOISTURE 72H MOISTURE FILLING SHAMPOO</h2>
+            <div class="rating" style="color:#9ca3af;">
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <span class="rating-text" style="color:#000;">0/5</span>
+            </div>
+            <button class="btn-link-custom" type="button">View Product</button>
+          </div>
+        </div>
+      </div>
+    
+      <!-- shampoo -->
+      <div class="container-custom">
+        <div class="left-section">
+          <h3>Explore</h3>
+          <h1>More From our Classic Brands</h1>
+          <a href="#">See all haircare products</a>
+        </div>
+        <div class="cards-wrapper">
+          <!-- Card 1 -->
+          <div class="card-custom">
+            <img src="assets/extra-oil serum 1.webp" alt="Bottle of L'Oreal Hyaluron Moisture 72H Moisture Sealing Conditioner in purple packaging" />
+            <p class="product-subtitle">Hyaluron Moisture</p>
+            <h2 class="product-title">HYALURON MOISTURE 72H MOISTURE SEALING CONDITIONER (180 ML)</h2>
+            <div class="rating">
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <span class="rating-text">5/5</span>
+            </div>
+            <button class="btn-link-custom" type="button">View Product</button>
+          </div>
+          <!-- Card 2 -->
+          <div class="card-custom">
+            <img src="assets/6 oil nourish 2.jpg" alt="Tube of L'Oreal Hyaluron Moisture Hydra Filling Night Cream in purple packaging" />
+            <p class="product-subtitle">Hyaluron Moisture</p>
+            <h2 class="product-title">HYALURON MOISTURE HYDRA FILLING NIGHT CREAM (180 ML)</h2>
+            <div class="rating" style="color:#9ca3af;">
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <span class="rating-text" style="color:#000;">0/5</span>
+            </div>
+            <button class="btn-link-custom" type="button">View Product</button>
+          </div>
+          <!-- Card 3 -->
+          <div class="card-custom">
+            <img src="assets/total repair conditioner 3.webp" alt="Bottle of L'Oreal Paris Hyaluron Moisture 72H Moisture Filling Shampoo in purple packaging" />
+            <p class="product-subtitle">Hyaluron Moisture</p>
+            <h2 class="product-title">L'ORÉAL PARIS HYALURON MOISTURE 72H MOISTURE FILLING SHAMPOO</h2>
+            <div class="rating" style="color:#9ca3af;">
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <span class="rating-text" style="color:#000;">0/5</span>
+            </div>
+            <button class="btn-link-custom" type="button">View Product</button>
+          </div>
+          <!-- card 4 -->
+          <div class="card-custom">
+            <img src="assets/6 oil conditioner 4.jpg" alt="Bottle of L'Oreal Hyaluron Moisture 72H Moisture Sealing Conditioner in purple packaging" />
+            <p class="product-subtitle">Hyaluron Moisture</p>
+            <h2 class="product-title">HYALURON MOISTURE 72H MOISTURE SEALING CONDITIONER (180 ML)</h2>
+            <div class="rating">
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <svg class="star-filled" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.564-.955L10 0l2.946 5.955 6.564.955-4.755 4.635 1.123 6.545z"/></svg>
+              <span class="rating-text">5/5</span>
+            </div>
+            <button class="btn-link-custom" type="button">View Product</button>
+          </div>
+        </div>
+      </div>
+      <!-- benefits -->
+      <div class="container">
+        <div class="left">
+          <h2>Discover Trends and Tips</h2>
+          <p>Keep Your Skin &amp; Hair Healthy &amp; Happy!</p>
+          <button class="see-all-btn" aria-label="See all articles">SEE ALL ARTICLES</button>
+        </div>
+        <div class="right" tabindex="0" aria-label="Scrollable articles list">
+          <div class="cards">
+            <article class="card" tabindex="0">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/a3e9a9d4-b4c4-4a9a-aa9d-53214e920641.jpg"
+                alt="Smiling woman side profile with long hair"
+                width="224"
+                height="160"
+              />
+              <div class="card-text">
+                Hyaluronic Acid Benefits for Different Hair Types
+              </div>
+            </article>
+            <article class="card" tabindex="0">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/c1e42189-e81b-492c-f131-5e0aec89fc3b.jpg"
+                alt="Close-up of clear liquid being poured into white cream"
+                width="224"
+                height="160"
+              />
+              <div class="card-text">
+                Myths and Facts about Hyaluronic Acid
+              </div>
+            </article>
+            <article class="card" tabindex="0">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/63de425d-d341-4934-c034-9b9dc780202d.jpg"
+                alt="Close-up of white cream texture on white background"
+                width="224"
+                height="160"
+              />
+              <div class="card-text">
+                Unlock the Benefits and Uses of Hyaluronic Acid for Radiant Skin
+              </div>
+            </article>
+            <article class="card" tabindex="0">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/5e17aa1f-52af-4f60-f06e-2f5a1e969e03.jpg"
+                alt="Close-up of woman's face side profile with wrinkle"
+                width="224"
+                height="160"
+              />
+              <div class="card-text">
+                Hyaluronic Acid Levels Drop With Age
+              </div>
+            </article>
+            <article class="card" tabindex="0">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/64c5bc6b-ea27-4912-73aa-fe50ecdb26a7.jpg"
+                alt="Close-up of kiwi fruit slice with seeds"
+                width="224"
+                height="160"
+              />
+              <div class="card-text">
+                Hyaluronic Acid Natural Sources Including Daily Foods
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <script>
+        function toggleMegaMenu() {
+          const menu = document.getElementById('megaMenu');
+          menu.classList.toggle('show');
+        }
+      
+        // Close on outside click
+        document.addEventListener('click', function (e) {
+          const menu = document.getElementById('megaMenu');
+          const skinCareNav = document.querySelector('.nav-item');
+          if (!skinCareNav.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.remove('show');
+          }
+        });
+      </script>
+      
+    
+</body>
+</html>

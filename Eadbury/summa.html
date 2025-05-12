@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skin Care Mega Menu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      gap: 30px;
+      background-color: #f5f5f5;
+      padding: 15px 40px;
+      position: relative;
+    }
+
+    .nav-item {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      border-top: 1px solid #ccc;
+      padding: 40px 80px;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      z-index: 999;
+    }
+
+    .mega-menu h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .mega-menu ul {
+      list-style-type: none;
+    }
+
+    .mega-menu li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .show {
+      display: grid !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="nav-item" onclick="toggleMegaMenu()">Skin Care</div>
+  <div class="nav-item">Hair Care</div>
+  <div class="nav-item">Hair Colour</div>
+  <div class="nav-item">Makeup</div>
+  <div class="nav-item">Virtual Beauty Tools</div>
+  <div class="nav-item">Our Purpose</div>
+  <div class="nav-item">Beauty Magazine</div>
+
+  <div id="megaMenu" class="mega-menu">
+    <div>
+      <h4>Face Care</h4>
+      <ul>
+        <li>Serums</li>
+        <li>Eye Serums</li>
+        <li>Moisturizers/Creams</li>
+        <li>Cleansers</li>
+        <li>Essence</li>
+        <li>Face Masks</li>
+        <li>Sunscreen</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Skin Concerns</h4>
+      <ul>
+        <li>Dark Spots</li>
+        <li>Dark Circles</li>
+        <li>Skin Brightening</li>
+        <li>Dry Skin</li>
+        <li>Oil Control</li>
+        <li>Anti Fine Lines</li>
+        <li>Anti Wrinkles</li>
+        <li>Sun Protection</li>
+        <li>Dehydrated Skin</li>
+        <li>Dull Skin</li>
+        <li>Hyper Pigmentation</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Ingredients</h4>
+      <ul>
+        <li>Melasyl</li>
+        <li>Hyaluronic Acid</li>
+        <li>Glycolic Acid</li>
+        <li>Niacinamide</li>
+        <li>Retinol</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Brands</h4>
+      <ul>
+        <li>Glycolic Bright</li>
+        <li>Crystal</li>
+        <li>Hyaluronic Acid</li>
+        <li>Revitalift</li>
+        <li>UV Defender</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleMegaMenu() {
+    const menu = document.getElementById('megaMenu');
+    menu.classList.toggle('show');
+  }
+
+  // Close on outside click
+  document.addEventListener('click', function (e) {
+    const menu = document.getElementById('megaMenu');
+    const skinCareNav = document.querySelector('.nav-item');
+    if (!skinCareNav.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('show');
+    }
+  });
+</script>
+
+</body>
+</html>
